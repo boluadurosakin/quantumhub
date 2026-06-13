@@ -1,0 +1,47 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  slug:  string;
+  data: {
+    title:       string;
+    description: string;
+    stack:       string[];
+    status:      'production' | 'experimental' | 'archived';
+    category:    string;
+    featured?:   boolean;
+    github?:     string;
+    demo?:       string;
+  };
+}
+
+interface Props {
+  projects: Project[];
+  columns?: 2 | 3;
+}
+
+const { projects, columns = 3 } = Astro.props;
+---
+
+<div
+  class:list={[
+    'grid gap-4',
+    columns === 3
+      ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+      : 'grid-cols-1 sm:grid-cols-2',
+  ]}
+>
+  {projects.map((project) => (
+    <ProjectCard
+      title={project.data.title}
+      description={project.data.description}
+      stack={project.data.stack}
+      status={project.data.status}
+      category={project.data.category}
+      slug={project.slug}
+      featured={project.data.featured}
+      github={project.data.github}
+      demo={project.data.demo}
+    />
+  ))}
+</div>

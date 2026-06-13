@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+
+// sort newest first
+const sorted = allProjects.sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime()
+);
+
+// categories
+const categories = ['all', ...new Set(sorted.map((p) => p.data.category))];
+
+// status summary
+const statusMap = { production: 0, experimental: 0, archived: 0 };
+
+sorted.forEach((p) => {
+  statusMap[p.data.status]++;
+});
+---
+
+<BaseLayout
+  title="Projects"
+  description="Explore AI systems, automation tools, backend applications, and infrastructure projects."
+>
+
+  <!-- HEADER -->
+  <section class="pt-14 pb-10 border-b border-surface-border">
+    <div class="container-main">
+      <p class="section-label label-mono mb-3">work</p>
+
+      <h1 class="font-display font-bold text-4xl text-ink-primary mb-3">
+        All Projects
+      </h1>
+
+      <p class="text-ink-secondary text-lg max-w-2xl leading-relaxed">
+        Systems, workflows, automation tools, and AI-powered infrastructure built for real-world efficiency.
+      </p>
+
+      <!-- STATUS -->
+      <div class="flex flex-wrap gap-3 mt-6">
+        <span class="badge-production">{statusMap.production} production</span>
+        <span class="badge-experimental">{statusMap.experimental} experimental</span>
+
+        {statusMap.archived > 0 && (
+          <span class="badge-archived">{statusMap.archived} archived</span>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- FILTER BAR -->
+  <section class="py-5 border-b border-surface-border sticky top-14 z-30 bg-surface-base/90 backdrop-blur-sm">
+    <div class="container-main">
+
+      <div
+        class="flex items-center gap-2 overflow-x-auto scrollbar-hide"
+        role="tablist"
+        aria-label="Project categories"
+      >
+        {categories.map((cat) => (
+          <button
+            type="button"
+            role="tab"
+            data-category={cat}
+            aria-selected={cat === 'all' ? 'true' : 'false'}
+            class:list={[
+              'flex-shrink-0 px-3 py-1.5 rounded text-sm font-medium transition-colors',
+              cat === 'all'
+                ? 'bg-surface-overlay text-ink-primary'
+                : 'text-ink-secondary hover:text-ink-primary hover:bg-surface-overlay',
+            ]}
+          >
+            {cat === 'all' ? `All (${sorted.length})` : cat}
+          </button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GRID -->
+  <section class="py-10">
+    <div class="container-main">
+
+      <div
+        id="projects-grid"
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+      >
+
+        {sorted.map((project) => (
+          <div
+            data-project-card
+            data-category={project.data.category}
+          >
+
+            <article class="card group relative flex flex-col p-5 gap-4 hover:shadow-glow h-full cursor-pointer">
+
+              <!-- TOP META -->
+              <div class="flex items-center justify-between gap-2">
+                <span class="badge-category">
+                  {project.data.category}
+                </span>
+
+                <span class:list={[`badge-${project.data.status}`]}>
+                  {project.data.status === 'production' && (
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  )}
+                  {project.data.status}
+                </span>
+              </div>
+
+              <!-- CONTENT -->
+              <div class="flex-1 relative">
+                <h3 class="font-display font-semibold text-base text-ink-primary mb-1.5 group-hover:text-accent transition-colors">
+                  <a href={`/projects/${project.slug}`} class="after:absolute after:inset-0">
+                    {project.data.title}
+                  </a>
+                </h3>
+
+                <p class="text-sm text-ink-secondary leading-relaxed line-clamp-2">
+                  {project.data.description}
+                </p>
+              </div>
+
+              <!-- STACK -->
+              <div class="flex flex-wrap gap-1.5">
+                {project.data.stack.slice(0, 4).map((tech) => (
+                  <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border">
+                    {tech}
+                  </span>
+                ))}
+
+                {project.data.stack.length > 4 && (
+                  <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+                    +{project.data.stack.length - 4}
+                  </span>
+                )}
+              </div>
+
+              <!-- FOOTER -->
+              <div class="relative z-10 flex items-center gap-3 pt-1 border-t border-surface-border text-xs font-mono text-ink-disabled">
+
+                <time datetime={project.data.date.toISOString()}>
+                  {project.data.date.toLocaleDateString('en-GB', {
+                    month: 'short',
+                    year: 'numeric',
+                  })}
+                </time>
+
+                {project.data.featured && (
+                  <span class="ml-auto text-accent/70">★ featured</span>
+                )}
+              </div>
+
+              <!-- CTA (IMPORTANT ADDITION) -->
+              <div class="flex justify-between items-center pt-2">
+                <a
+                  href={`/projects/${project.slug}`}
+                  class="text-sm text-accent hover:underline relative z-10"
+                >
+                  View Case Study →
+                </a>
+              </div>
+
+            </article>
+
+          </div>
+        ))}
+
+      </div>
+
+      <!-- EMPTY STATE -->
+      <div id="empty-state" class="hidden py-16 text-center">
+        <p class="text-ink-muted">
+          No projects in this category yet.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>
+
+<!-- FILTER SCRIPT -->
+<script>
+  const filters = document.querySelectorAll('[data-category]');
+  const cards = document.querySelectorAll('[data-project-card]');
+  const empty = document.getElementById('empty-state');
+
+  filters.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const cat = btn.dataset.category;
+
+      // update tabs
+      filters.forEach((b) => {
+        const active = b === btn;
+
+        b.setAttribute('aria-selected', active ? 'true' : 'false');
+
+        b.classList.toggle('bg-surface-overlay', active);
+        b.classList.toggle('text-ink-primary', active);
+        b.classList.toggle('text-ink-secondary', !active);
+      });
+
+      // filter cards
+      let visible = 0;
+
+      cards.forEach((card) => {
+        const match = cat === 'all' || card.dataset.category === cat;
+        card.classList.toggle('hidden', !match);
+        if (match) visible++;
+      });
+
+      empty.classList.toggle('hidden', visible > 0);
+    });
+  });
+</script>

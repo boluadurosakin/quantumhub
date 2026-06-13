@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Let's discuss AI automation, intelligent workflows, operational systems, and business process optimization."
+>
+
+  <section class="pt-14 pb-16">
+    <div class="container-main max-w-2xl">
+
+      <p class="section-label label-mono mb-3">contact</p>
+      <h1 class="font-display font-bold text-4xl text-ink-primary mb-3">Get in touch</h1>
+      <p class="text-ink-secondary text-lg leading-relaxed mb-10">
+        Whether you're exploring AI automation, workflow optimization, internal business tools, or operational systems, I'd love to hear about it. I'm always interested in projects that solve real-world problems through intelligent systems and automation.
+      </p>
+
+      <!-- Contact methods -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+        {[
+          {
+            label: 'Email',
+            value: 'holarbolu@gmail.com',
+            href:  'mailto:holarbolu@gmail.com',
+            mono:  true,
+          },
+          {
+            label: 'GitHub',
+            value: 'github.com/boluadurosakin',
+            href:  'https://github.com/boluadurosakin',
+            mono:  true,
+          },
+          {
+            label: 'Twitter / X',
+            value: '@0xQuantum_',
+            href:  'https://x.com/0xQuantum_',
+            mono:  false,
+          },
+          
+        ].map(({ label, value, href, mono }) => (
+          <a
+            href={href}
+            target={href.startsWith('mailto') ? undefined : '_blank'}
+            rel={href.startsWith('mailto') ? undefined : 'noopener noreferrer'}
+            class="card p-4 group hover:border-surface-muted transition-colors"
+          >
+            <p class="label-mono mb-1">{label}</p>
+            <p class:list={[
+              'text-sm text-ink-secondary group-hover:text-ink-primary transition-colors',
+              mono && 'font-mono',
+            ]}>
+              {value}
+            </p>
+          </a>
+        ))}
+      </div>
+
+      <!-- Availability notice -->
+      <div class="card p-5 flex items-start gap-3">
+        <span class="w-2 h-2 rounded-full bg-accent mt-1 flex-shrink-0 animate-pulse-slow"></span>
+        <div>
+          <p class="text-sm font-medium text-ink-primary mb-0.5">Currently available</p>
+          <p class="text-sm text-ink-secondary leading-relaxed">
+            Open to select freelance projects — backend systems, automation, AI integration.
+            Not looking for full-time positions right now.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</BaseLayout>

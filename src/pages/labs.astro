@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Labs can use a separate content collection, or be manually curated here.
+// Extend by adding src/content/labs/*.md files once you have experiments to document.
+const LABS = [
+  {
+    title:  'pgvector Benchmarks',
+    desc:   'Performance testing cosine similarity queries across 1M, 5M, and 10M embedding vectors. Comparing IVFFLAT vs HNSW index strategies.',
+    status: 'active',
+    stack:  ['PostgreSQL', 'pgvector', 'Python'],
+    tags:   ['embeddings', 'benchmarks'],
+  },
+  {
+    title:  'LLM Prompt Caching Patterns',
+    desc:   'Exploring cost and latency gains from Claude prompt caching across multi-step document processing pipelines.',
+    status: 'active',
+    stack:  ['Claude API', 'Node.js'],
+    tags:   ['llm', 'optimization'],
+  },
+  {
+    title:  'Self-hosted Observability Stack',
+    desc:   'Running Grafana + Prometheus + Loki on a single DigitalOcean droplet for personal infrastructure monitoring.',
+    status: 'paused',
+    stack:  ['Grafana', 'Prometheus', 'Loki', 'Docker'],
+    tags:   ['devops', 'observability'],
+  },
+];
+---
+
+<BaseLayout
+  title="Labs"
+  description="Experiments, benchmarks, and technical explorations. Half-finished ideas welcome."
+>
+
+  <!-- Header -->
+  <section class="pt-14 pb-10 border-b border-surface-border">
+    <div class="container-main">
+      <p class="section-label label-mono mb-3">experiments</p>
+      <h1 class="font-display font-bold text-4xl text-ink-primary mb-3">Labs</h1>
+      <p class="text-ink-secondary text-lg max-w-2xl leading-relaxed">
+        Exploratory work, benchmarks, and half-finished ideas. Not everything here is polished —
+        that's the point.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lab items -->
+  <section class="py-12">
+    <div class="container-main">
+      <ul class="flex flex-col gap-4" role="list">
+        {LABS.map(({ title, desc, status, stack, tags }) => (
+          <li class="card p-5 flex flex-col sm:flex-row gap-4">
+            <!-- Status indicator -->
+            <div class="flex-shrink-0 pt-1">
+              <span class:list={[
+                'inline-flex items-center gap-1.5 font-mono text-2xs px-2 py-1 rounded border',
+                status === 'active'
+                  ? 'bg-emerald-400/5 text-emerald-400 border-emerald-400/20'
+                  : 'bg-surface-overlay text-ink-disabled border-surface-border',
+              ]}>
+                {status === 'active' && <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-slow"></span>}
+                {status}
+              </span>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <h2 class="font-display font-semibold text-base text-ink-primary mb-1">{title}</h2>
+              <p class="text-sm text-ink-secondary leading-relaxed mb-3">{desc}</p>
+              <div class="flex flex-wrap gap-1.5">
+                {stack.map((t) => (
+                  <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border">{t}</span>
+                ))}
+                {tags.map((tag) => (
+                  <span class="font-mono text-2xs px-2 py-0.5 rounded text-ink-disabled">#{tag}</span>
+                ))}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+</BaseLayout>

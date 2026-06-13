@@ -1,0 +1,96 @@
+---
+import BaseLayout   from '../layouts/BaseLayout.astro';
+import Hero         from '../components/Hero.astro';
+import ProjectGrid  from '../components/ProjectGrid.astro';
+import { getCollection } from 'astro:content';
+
+// Fetch featured projects, sorted newest first
+const allProjects = await getCollection('projects', ({ data }) => !data.draft);
+const featured = allProjects
+  .filter((p) => p.data.featured)
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const STACK = [
+  { group: 'Languages',    items: ['TypeScript', 'Node.js', 'Python', 'Bash'] },
+  { group: 'Infrastructure', items: ['Nginx', 'Docker', 'DigitalOcean', 'Ubuntu'] },
+  { group: 'Data',         items: ['PostgreSQL', 'Redis', 'pgvector', 'SQLite'] },
+  { group: 'AI & Automation', items: ['Claude API', 'n8n', 'OpenAI', 'LangChain'] },
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Senior software engineer building automation systems, AI pipelines, and backend infrastructure."
+>
+
+  <Hero />
+
+  <!-- ─── Featured Projects ────────────────────────────────────────────── -->
+  <section class="py-16">
+    <div class="container-main">
+
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <p class="section-label label-mono mb-2">selected work</p>
+          <h2 class="font-display font-semibold text-2xl text-ink-primary">Featured Projects</h2>
+        </div>
+        <a href="/projects" class="link-arrow hidden sm:inline-flex">
+          All projects
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M6.5 3l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      {featured.length > 0
+        ? <ProjectGrid projects={featured} columns={3} />
+        : (
+          <p class="text-sm text-ink-muted">
+            No featured projects yet. Add <code class="font-mono text-accent">featured: true</code> to a project file.
+          </p>
+        )
+      }
+
+      <div class="mt-6 sm:hidden">
+        <a href="/projects" class="link-arrow">
+          View all projects
+          <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+            <path d="M2 6h8M6.5 3l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── Core Stack ───────────────────────────────────────────────────── -->
+  <section class="py-16 border-t border-surface-border">
+    <div class="container-main">
+
+      <div class="mb-8">
+        <p class="section-label label-mono mb-2">tooling</p>
+        <h2 class="font-display font-semibold text-2xl text-ink-primary">Core Stack</h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {STACK.map(({ group, items }) => (
+          <div class="card p-4">
+            <p class="label-mono mb-3">{group}</p>
+            <ul class="flex flex-col gap-1.5">
+              {items.map((tech) => (
+                <li class="flex items-center gap-2 text-sm text-ink-secondary">
+                  <span class="w-1 h-1 rounded-full bg-accent/60 flex-shrink-0"></span>
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+
+
+</BaseLayout>

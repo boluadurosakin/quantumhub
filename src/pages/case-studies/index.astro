@@ -1,0 +1,83 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const all = await getCollection('caseStudies', ({ data }) => !data.draft);
+
+const sorted = all.sort((a, b) => {
+  if (!a.data.date && !b.data.date) return 0;
+  if (!a.data.date) return 1;
+  if (!b.data.date) return -1;
+  return b.data.date.getTime() - a.data.date.getTime();
+});
+---
+
+<BaseLayout
+  title="Case Studies"
+  description="Detailed breakdowns of AI automation systems, intelligent workflows, operational tools, and the engineering decisions behind them."
+>
+
+  <section class="pt-14 pb-10 border-b border-surface-border">
+    <div class="container-main">
+      <p class="section-label label-mono mb-3">case studies</p>
+      <h1 class="font-display font-bold text-4xl text-ink-primary mb-3">
+        Behind the systems.
+      </h1>
+      <p class="text-ink-secondary text-lg max-w-2xl leading-relaxed">
+        Detailed breakdowns of how AI-powered systems, intelligent workflows,
+        and automation infrastructure were designed, built, and deployed to
+        solve real operational challenges.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-10">
+    <div class="container-main">
+
+      {sorted.length === 0 && (
+        <div class="py-12">
+          <p class="text-sm text-ink-muted">
+            Case studies are currently being documented and will be published soon.
+          </p>
+        </div>
+      )}
+
+      {sorted.length > 0 && (
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {sorted.map((study) => (
+            <a
+              href={`/case-studies/${study.id}`}
+              class="card p-5 group flex flex-col gap-4 hover:shadow-glow transition-all"
+            >
+              <div>
+                <h2 class="font-display font-semibold text-base text-ink-primary group-hover:text-accent transition-colors mb-1.5">
+                  {study.data.title}
+                </h2>
+                <p class="text-sm text-ink-secondary leading-relaxed line-clamp-3">
+                  {study.data.description}
+                </p>
+              </div>
+
+              {study.data.stack.length > 0 && (
+                <div class="flex flex-wrap gap-1.5 mt-auto">
+                  {study.data.stack.slice(0, 4).map((tech) => (
+                    <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <div class="flex items-center justify-between pt-2 border-t border-surface-border text-xs font-mono text-ink-disabled">
+                <span class="truncate">{study.data.role ?? 'Case Study'}</span>
+                {study.data.timeline && <span>{study.data.timeline}</span>}
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
+
+    </div>
+  </section>
+
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+// No props — this is a fixed hero for the index page.
+// Swap out copy as needed in one place.
+---
+
+<section class="relative pt-20 pb-16 overflow-hidden">
+
+  <!-- Background grid -->
+  <div class="absolute inset-0 bg-grid opacity-30 pointer-events-none" aria-hidden="true"></div>
+
+  <!-- Radial glow behind headline -->
+  <div
+    class="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] pointer-events-none"
+    style="background: radial-gradient(ellipse at center top, rgba(6,182,212,0.06) 0%, transparent 70%);"
+    aria-hidden="true"
+  ></div>
+
+  <div class="container-main relative">
+
+    <!-- Status chip -->
+    <div class="flex items-center gap-2 mb-8 animate-fade-in">
+      <span class="flex items-center gap-1.5 font-mono text-xs text-ink-muted border border-surface-border rounded-full px-3 py-1 bg-surface-raised">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-slow"></span>
+        available for projects and collaborations
+      </span>
+    </div>
+
+    <!-- Headline -->
+    <div class="max-w-3xl mb-6 animate-fade-in" style="animation-delay: 0.05s">
+      <h1 class="font-display font-bold text-4xl sm:text-5xl lg:text-6xl text-ink-primary leading-[1.1] tracking-tight mb-4">
+        Engineering systems,<br/>
+        <span class="text-accent">not just software.</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-ink-secondary leading-relaxed max-w-2xl">
+        I design intelligent workflows, AI-powered operational systems, and automation infrastructure that eliminate repetitive work and scale decision-making.
+      
+      </p>
+    </div>
+
+    <!-- CTAs -->
+    <div class="flex flex-wrap items-center gap-3 mb-16 animate-fade-in" style="animation-delay: 0.1s">
+      <a
+        href="/projects"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded bg-accent text-surface-base text-sm font-semibold hover:bg-accent/90 transition-colors"
+      >
+        View projects
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+          <path d="M2 6h8M6.5 3l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a
+        href="/case-studies"
+        class="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-surface-border text-sm font-medium text-ink-secondary hover:text-ink-primary hover:border-surface-muted transition-colors"
+      >
+        View Case Studies
+        <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
+          <path d="M2 6h8M6.5 3l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>  
+      </a>
+    </div>
+
+    <!-- Stats row -->
+    <div
+      class="grid grid-cols-2 sm:grid-cols-4 gap-px bg-surface-border border border-surface-border rounded-md overflow-hidden animate-fade-in"
+      style="animation-delay: 0.15s"
+    >
+      {[
+        { value: '5',  label: 'Flagship AI projects' },
+        { value: '30+',  label: 'Automated workflows'   },
+        { value: '4',   label: 'Industries Explored'   },
+        { value: '100+', label: 'Hours saved through automation' },
+      ].map(({ value, label }) => (
+        <div class="bg-surface-raised px-5 py-4">
+          <p class="font-display font-semibold text-2xl text-ink-primary">{value}</p>
+          <p class="label-mono mt-0.5">{label}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
