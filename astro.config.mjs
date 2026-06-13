@@ -1,6 +1,6 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://quantumhub.me',
-  output: 'static',
+  site: 'https://boluadurosakin.github.io',
+  base: '/quantumhub',
 });

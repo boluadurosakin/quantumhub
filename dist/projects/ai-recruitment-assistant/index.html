@@ -1,0 +1,133 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v6.4.6"><title>AI RECRUITMENT ASSISTANT · QuantumHub</title><meta name="description" content="Recruitment assistant that extracts structured candidate data from resumes using AI and converts them into standardized JSON for recruitment workflows."><link rel="canonical" href="https://quantumhub.me/quantumhub/projects/ai-recruitment-assistant/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://quantumhub.me/quantumhub/projects/ai-recruitment-assistant/"><meta property="og:title" content="AI RECRUITMENT ASSISTANT · QuantumHub"><meta property="og:description" content="Recruitment assistant that extracts structured candidate data from resumes using AI and converts them into standardized JSON for recruitment workflows."><meta property="og:image" content="https://quantumhub.me/og-default.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI RECRUITMENT ASSISTANT · QuantumHub"><meta name="twitter:description" content="Recruitment assistant that extracts structured candidate data from resumes using AI and converts them into standardized JSON for recruitment workflows."><meta name="twitter:image" content="https://quantumhub.me/og-default.png"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Theme initializer --><script>
+  (function () {
+    const stored = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const isDark = stored ? stored === 'dark' : systemDark;
+
+    document.documentElement.classList.toggle('dark', isDark);
+  })();
+</script><link rel="stylesheet" href="/quantumhub/_astro/BaseLayout.B0hLl-50.css"></head> <body class="min-h-screen flex flex-col bg-surface-base text-ink-primary antialiased"> <header class="sticky top-0 z-50 border-b border-surface-border bg-surface-base/80 backdrop-blur-md"> <nav class="container-main flex items-center justify-between h-14"> <!-- Logo --> <a href="/" class="flex items-center gap-2.5 group"> <span class="font-semibold text-sm text-ink-primary group-hover:text-accent transition-colors">
+quantumhub<span class="text-accent">.me</span> </span> </a> <!-- Desktop Nav --> <ul class="hidden md:flex items-center gap-1"> <li> <a href="/projects" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Projects </a> </li><li> <a href="/case-studies" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Case Studies </a> </li><li> <a href="/about" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> About </a> </li><li> <a href="/contact" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Contact </a> </li> </ul> <!-- Actions --> <div class="flex items-center gap-3"> <!-- Theme Toggle --> <button id="theme-toggle" class="w-9 h-9 rounded border border-surface-border text-ink-muted hover:text-accent transition-colors" aria-label="Toggle theme"> <span id="theme-icon">🌙</span> </button> <!-- Mobile Toggle --> <button id="mobile-menu-toggle" class="md:hidden p-1.5 rounded text-ink-muted hover:text-ink-primary" aria-label="Toggle menu" aria-expanded="false">
+☰
+</button> </div> </nav> <!-- Mobile Menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-surface-border bg-surface-base"> <ul class="container-main py-3 flex flex-col gap-1"> <li> <a href="/projects" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Projects </a> </li><li> <a href="/case-studies" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Case Studies </a> </li><li> <a href="/about" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> About </a> </li><li> <a href="/contact" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Contact </a> </li> </ul> </div> </header> <script>
+  // Mobile menu
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  function updateIcon() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle('dark');
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon();
+  });
+
+  updateIcon();
+</script> <main class="flex-1">   <div class="border-b border-surface-border"> <div class="container-main py-3 flex items-center gap-2 text-xs text-ink-muted font-mono"> <a href="/" class="hover:text-ink-secondary transition-colors">~</a> <span>/</span> <a href="/projects" class="hover:text-ink-secondary transition-colors">projects</a> <span>/</span> <span class="text-ink-secondary">ai-recruitment-assistant</span> </div> </div> <div class="container-main py-12"> <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10 items-start"> <!-- Main content --> <div> <!-- Badges --> <div class="flex flex-wrap items-center gap-2 mb-5"> <span class="badge-category">automation</span> <span class="badge-production"> <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-slow"></span> production </span> <span class="badge" style="background:rgba(6,182,212,0.08);color:#06b6d4;border-color:rgba(6,182,212,0.2)">★ featured</span> </div> <!-- Title --> <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink-primary leading-tight mb-3"> AI RECRUITMENT ASSISTANT </h1> <p class="text-lg text-ink-secondary leading-relaxed mb-8"> Recruitment assistant that extracts structured candidate data from resumes using AI and converts them into standardized JSON for recruitment workflows. </p> <!-- Markdown body --> <div class="
+          prose prose-invert max-w-none
+          prose-headings:font-display prose-headings:font-semibold prose-headings:text-ink-primary
+          prose-p:text-ink-secondary prose-p:leading-relaxed
+          prose-a:text-accent prose-a:no-underline hover:prose-a:underline
+          prose-code:font-mono prose-code:text-accent prose-code:bg-surface-raised prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:before:content-none prose-code:after:content-none
+          prose-pre:bg-surface-raised prose-pre:border prose-pre:border-surface-border
+          prose-strong:text-ink-primary
+          prose-li:text-ink-secondary
+          prose-hr:border-surface-border
+        "> <h1 id="ai-recruitment-assistant">AI Recruitment Assistant</h1>
+<h2 id="overview">Overview</h2>
+<p>The AI recruitment assistant automates the extraction of structured data from CVs and resumes. It processes PDF and DOCX files, extracts relevant candidate information, and converts it into a clean, standardized JSON format for use in recruitment systems, ATS platforms, or HR dashboards.</p>
+<p>The system eliminates manual CV screening and enables fast, consistent candidate evaluation across large applicant pools.</p>
+<hr>
+<h2 id="architecture">Architecture</h2>
+<ol>
+<li><strong>Upload</strong> — Candidate CV is uploaded (PDF or DOCX)</li>
+<li><strong>Text Extraction</strong> — Document is converted into raw text</li>
+<li><strong>AI Parsing</strong> — AI extracts structured candidate data</li>
+<li><strong>Normalization</strong> — Skills, roles, and education are standardized</li>
+<li><strong>Output Generation</strong> — Structured JSON is produced</li>
+<li><strong>Storage / Integration</strong> — Data is sent to database or automation tools</li>
+</ol>
+<hr>
+<h2 id="key-design-decisions">Key Design Decisions</h2>
+<ul>
+<li>AI-driven structured extraction for flexibility across CV formats</li>
+<li>Standard JSON schema for consistent downstream usage</li>
+<li>Lightweight parsing layer before AI processing</li>
+<li>Designed for integration with recruitment pipelines (n8n, APIs, HR tools)</li>
+<li>Modular architecture for future ATS expansion</li>
+</ul>
+<hr>
+<h2 id="features">Features</h2>
+<ul>
+<li>PDF &#x26; DOCX CV upload support</li>
+<li>AI-powered data extraction</li>
+<li>Structured JSON output</li>
+<li>Skill normalization system</li>
+<li>Education and experience parsing</li>
+<li>Fast processing pipeline</li>
+<li>Easy API integration</li>
+</ul>
+<hr>
+<h2 id="challenges-solved">Challenges Solved</h2>
+<h3 id="unstructured-cv-formats">Unstructured CV Formats</h3>
+<p>CVs vary widely in layout. AI-based parsing ensures consistent structured output regardless of format differences.</p>
+<h3 id="data-consistency">Data Consistency</h3>
+<p>Normalization layer ensures skills, job titles, and institutions are standardized across candidates.</p>
+<h3 id="automation-readiness">Automation Readiness</h3>
+<p>Output is designed for direct integration into recruitment pipelines, eliminating manual formatting steps.</p>
+<hr>
+<h2 id="results">Results</h2>
+<ul>
+<li>Reduced manual CV screening workload</li>
+<li>Faster candidate processing</li>
+<li>Improved consistency in candidate data</li>
+<li>Scalable recruitment automation pipeline</li>
+<li>Easy integration into HR systems and workflows</li>
+</ul>
+<hr>
+<h2 id="tech-stack">Tech Stack</h2>
+<p>-n8n
+-OpenAI API
+-Tally Forms
+-Gmail
+-Supabase</p>
+<hr>
+<h2 id="status">Status</h2>
+<p>Production-ready recruitment automation tool for structured CV intelligence and candidate processing.</p> </div> </div> <!-- Sidebar --> <aside class="lg:sticky lg:top-28 flex flex-col gap-4"> <!-- Meta card --> <div class="card p-5 flex flex-col gap-4"> <p class="label-mono">Project info</p> <dl class="flex flex-col gap-3 text-sm"> <div> <dt class="text-ink-disabled text-xs font-mono mb-0.5">Date</dt> <dd class="text-ink-secondary"> <time datetime="2026-01-29T00:00:00.000Z"> 29 January 2026 </time> </dd> </div> <div> <dt class="text-ink-disabled text-xs font-mono mb-0.5">Category</dt> <dd class="text-ink-secondary">automation</dd> </div> <div> <dt class="text-ink-disabled text-xs font-mono mb-1">Stack</dt> <dd class="flex flex-wrap gap-1.5"> <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border"> n8n </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border"> OpenAI API </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border"> Tally Forms </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border"> Gmail </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-muted border border-surface-border"> Supabase </span> </dd> </div> <div> <dt class="text-ink-disabled text-xs font-mono mb-1">Tags</dt> <dd class="flex flex-wrap gap-1.5"> <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+#ai </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+#cv-parser </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+#recruitment </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+#automation </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay text-ink-disabled border border-surface-border">
+#llm </span> </dd> </div> </dl> </div> <!-- Action links --> <div class="card p-5 flex flex-col gap-2"> <p class="label-mono mb-1">Links</p> <a href="https://github.com/yourusername/ai-cv-parser" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-sm text-ink-secondary hover:text-ink-primary transition-colors py-1"> <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0"> <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path> </svg>
+View source
+<svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="ml-auto opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> <a href="https://your-demo-link.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2.5 text-sm text-accent hover:text-accent/80 transition-colors py-1"> <svg width="14" height="14" viewBox="0 0 12 12" fill="none"> <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.3"></circle> <path d="M4 6l1.5 1.5L8 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+Live demo
+<svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="ml-auto opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </div> <!-- Back link --> <a href="/projects" class="flex items-center gap-2 text-sm text-ink-muted hover:text-ink-secondary transition-colors px-1"> <svg width="14" height="14" viewBox="0 0 12 12" fill="none"> <path d="M10 6H2M5.5 9L2 6l3.5-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+All projects
+</a> </aside> </div> <!-- Related projects -->  </div>  </main> <footer class="border-t border-surface-border mt-24"> <div class="container-main py-12"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10"> <!-- Brand column --> <div class="sm:col-span-1"> <a href="/" class="inline-flex items-center gap-2 mb-3 group"> <svg width="18" height="18" viewBox="0 0 20 20" fill="none"> <rect x="1" y="1" width="18" height="18" rx="3" stroke="#06b6d4" stroke-width="1.5"></rect> <path d="M6 10 L10 6 L14 10 L10 14 Z" fill="#06b6d4" opacity="0.8"></path> <rect x="11" y="11" width="4" height="4" rx="1" fill="#06b6d4"></rect> </svg> <span class="font-display font-semibold text-sm text-ink-primary">
+quantumhub<span class="text-accent">.me</span> </span> </a> <p class="text-xs text-ink-muted leading-relaxed max-w-xs">
+Designing intelligent workflows, AI-powered operational systems, and scalable automation infrastructure.
+</p> </div> <!-- Nav links --> <div> <p class="label-mono mb-3">Pages</p> <ul class="flex flex-col gap-1.5"> <li> <a href="/projects" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Projects </a> </li><li> <a href="/case-studies" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Case Studies </a> </li><li> <a href="/about" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> About </a> </li><li> <a href="/contact" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Contact </a> </li> </ul> </div> <!-- External links --> <div> <p class="label-mono mb-3">Connect</p> <ul class="flex flex-col gap-1.5"> <li> <a href="https://github.com/boluadurosakin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-ink-secondary hover:text-ink-primary transition-colors"> GitHub <svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </li><li> <a href="https://x.com/0xQuantum_" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-ink-secondary hover:text-ink-primary transition-colors"> X <svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </li> </ul> </div> </div> <div class="pt-10 mt-10 text-center"> <p class="text-sm text-ink-secondary mb-4">
+Explore the architecture, workflows, and engineering decisions behind my flagship systems.
+</p> <a href="/case-studies" class="inline-flex items-center gap-2 px-4 py-2 rounded border border-surface-border hover:border-accent transition-colors">
+View Case Studies
+    →
+</a> </div> <!-- Bottom bar --> <div class="pt-6 border-t border-surface-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"> <p class="font-mono text-2xs text-ink-disabled">
+© 2026 QuantumHub — AI Automation & Systems Engineer
+</p> <p class="font-mono text-2xs text-ink-disabled"> <span class="text-accent/60">→</span> open to collaborations
+</p> </div> </div> </footer> </body></html>

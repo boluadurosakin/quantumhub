@@ -1,0 +1,193 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro v6.4.6"><title>AI Recruitment Assistant · QuantumHub</title><meta name="description" content="Automated CV screening workflow that analyzes resumes, scores candidates, and delivers recruiter-ready insights through AI."><link rel="canonical" href="https://quantumhub.me/quantumhub/case-studies/ai-recruitment-assistant/"><!-- Open Graph --><meta property="og:type" content="website"><meta property="og:url" content="https://quantumhub.me/quantumhub/case-studies/ai-recruitment-assistant/"><meta property="og:title" content="AI Recruitment Assistant · QuantumHub"><meta property="og:description" content="Automated CV screening workflow that analyzes resumes, scores candidates, and delivers recruiter-ready insights through AI."><meta property="og:image" content="https://quantumhub.me/og-default.png"><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="AI Recruitment Assistant · QuantumHub"><meta name="twitter:description" content="Automated CV screening workflow that analyzes resumes, scores candidates, and delivers recruiter-ready insights through AI."><meta name="twitter:image" content="https://quantumhub.me/og-default.png"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><!-- Theme initializer --><script>
+  (function () {
+    const stored = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const isDark = stored ? stored === 'dark' : systemDark;
+
+    document.documentElement.classList.toggle('dark', isDark);
+  })();
+</script><link rel="stylesheet" href="/quantumhub/_astro/BaseLayout.B0hLl-50.css"></head> <body class="min-h-screen flex flex-col bg-surface-base text-ink-primary antialiased"> <header class="sticky top-0 z-50 border-b border-surface-border bg-surface-base/80 backdrop-blur-md"> <nav class="container-main flex items-center justify-between h-14"> <!-- Logo --> <a href="/" class="flex items-center gap-2.5 group"> <span class="font-semibold text-sm text-ink-primary group-hover:text-accent transition-colors">
+quantumhub<span class="text-accent">.me</span> </span> </a> <!-- Desktop Nav --> <ul class="hidden md:flex items-center gap-1"> <li> <a href="/projects" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Projects </a> </li><li> <a href="/case-studies" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Case Studies </a> </li><li> <a href="/about" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> About </a> </li><li> <a href="/contact" class="px-3 py-1.5 rounded text-sm font-medium transition-colors text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Contact </a> </li> </ul> <!-- Actions --> <div class="flex items-center gap-3"> <!-- Theme Toggle --> <button id="theme-toggle" class="w-9 h-9 rounded border border-surface-border text-ink-muted hover:text-accent transition-colors" aria-label="Toggle theme"> <span id="theme-icon">🌙</span> </button> <!-- Mobile Toggle --> <button id="mobile-menu-toggle" class="md:hidden p-1.5 rounded text-ink-muted hover:text-ink-primary" aria-label="Toggle menu" aria-expanded="false">
+☰
+</button> </div> </nav> <!-- Mobile Menu --> <div id="mobile-menu" class="hidden md:hidden border-t border-surface-border bg-surface-base"> <ul class="container-main py-3 flex flex-col gap-1"> <li> <a href="/projects" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Projects </a> </li><li> <a href="/case-studies" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Case Studies </a> </li><li> <a href="/about" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> About </a> </li><li> <a href="/contact" class="block px-3 py-2 rounded text-sm font-medium text-ink-muted hover:text-ink-primary hover:bg-surface-muted"> Contact </a> </li> </ul> </div> </header> <script>
+  // Mobile menu
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = menu?.classList.toggle('hidden') === false;
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+
+  function updateIcon() {
+    const isDark = document.documentElement.classList.contains('dark');
+    if (themeIcon) themeIcon.textContent = isDark ? '☀️' : '🌙';
+  }
+
+  themeToggle?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const isDark = root.classList.toggle('dark');
+
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    updateIcon();
+  });
+
+  updateIcon();
+</script> <main class="flex-1">   <div class="border-b border-surface-border"> <div class="container-main py-3 flex items-center gap-2 text-xs font-mono text-ink-muted"> <a href="/" class="hover:text-ink-secondary transition-colors">~</a> <span>/</span> <a href="/case-studies" class="hover:text-ink-secondary transition-colors">case-studies</a> <span>/</span> <span class="text-ink-secondary">AI Recruitment Assistant</span> </div> </div> <section class="py-14"> <div class="container-main"> <div class="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-12 items-start"> <!-- Main Content --> <div> <span class="badge mb-5" style="background:rgba(6,182,212,0.08);color:#06b6d4;border-color:rgba(6,182,212,0.2)">
+★ flagship system
+</span> <h1 class="font-display font-bold text-4xl text-ink-primary mb-4 leading-tight"> AI Recruitment Assistant </h1> <p class="text-xl text-ink-secondary leading-relaxed max-w-3xl mb-10"> Automated CV screening workflow that analyzes resumes, scores candidates, and delivers recruiter-ready insights through AI. </p> <div id="case-study-body" class="
+              prose prose-invert max-w-none
+              prose-headings:text-ink-primary
+              prose-headings:font-display
+              prose-p:text-ink-secondary
+              prose-p:leading-relaxed
+              prose-li:text-ink-secondary
+              prose-strong:text-ink-primary
+              prose-a:text-accent
+              prose-code:text-accent
+              prose-pre:bg-surface-raised
+              prose-pre:border
+              prose-pre:border-surface-border
+            "> <hr>
+<h2 id="overview">Overview</h2>
+<p>The AI Recruitment Assistant is an intelligent recruitment automation workflow designed to reduce the time spent manually reviewing resumes. Instead of requiring recruiters to evaluate every application individually, the system automatically processes submitted CVs, extracts relevant information, generates candidate assessments, and delivers recruiter-ready insights.</p>
+<p>Built using workflow automation and large language models, the solution demonstrates how hiring operations can be streamlined without developing a custom frontend application.</p>
+<h2 id="problem">Problem</h2>
+<p>Recruiters often spend significant time reviewing resumes, comparing candidates, and identifying qualified applicants.</p>
+<p>As application volumes increase, manual screening becomes slower, less consistent, and increasingly difficult to scale. Smaller organizations frequently rely on spreadsheets, email chains, and manual review processes because enterprise ATS solutions are often expensive and overly complex.</p>
+<p>The objective was to create a lightweight recruitment workflow capable of evaluating candidates automatically while maintaining a simple and accessible submission experience.</p>
+<h2 id="solution-architecture">Solution Architecture</h2>
+<p>The system combines form-based data collection, workflow automation, AI analysis, and automated communication.</p>
+<p>Applicants submit their CV through a Tally Form. The submission triggers an n8n workflow that processes the uploaded document, extracts relevant information, analyzes candidate suitability using OpenAI, and generates structured recruiter insights.</p>
+<p>The workflow automates repetitive screening activities while preserving human decision-making for final hiring outcomes.</p>
+<h3 id="architecture-flow">Architecture Flow</h3>
+<p>Candidate → Tally Form → n8n Workflow → CV Extraction → OpenAI Analysis → Candidate Scoring → Recruiter Summary → Gmail Notifications</p>
+<h2 id="workflow-design">Workflow Design</h2>
+<ol>
+<li>Candidate submits a CV through Tally Forms.</li>
+<li>Submission triggers an n8n automation workflow.</li>
+<li>Resume file is retrieved and processed.</li>
+<li>Resume content is extracted and structured.</li>
+<li>OpenAI evaluates the candidate profile.</li>
+<li>Candidate strengths and weaknesses are identified.</li>
+<li>A suitability score is generated.</li>
+<li>Recruiter-ready insights are produced.</li>
+<li>Gmail sends an acknowledgement email.</li>
+<li>Recruiters receive a structured evaluation report.</li>
+</ol>
+<h2 id="ai-components">AI Components</h2>
+<p>OpenAI is used to transform unstructured resume content into actionable recruitment insights.</p>
+<p>The model performs:</p>
+<ul>
+<li>Resume analysis</li>
+<li>Candidate scoring</li>
+<li>Skill identification</li>
+<li>Experience evaluation</li>
+<li>Strength assessment</li>
+<li>Weakness assessment</li>
+<li>Recruitment recommendations</li>
+</ul>
+<h2 id="engineering-decisions">Engineering Decisions</h2>
+<p>A deliberate decision was made to avoid building a custom frontend application.</p>
+<p>Instead, Tally Forms was used as the candidate submission layer. This significantly reduced development complexity, accelerated deployment, and allowed engineering effort to focus on workflow design and AI processing.</p>
+<p>Key technologies include:</p>
+<ul>
+<li>Tally Forms</li>
+<li>n8n</li>
+<li>OpenAI API</li>
+<li>Gmail</li>
+<li>Supabase</li>
+</ul>
+<h2 id="results">Results</h2>
+<p>The workflow transformed a manual recruitment process into an automated screening pipeline.</p>
+<p>Key outcomes include:</p>
+<ul>
+<li>Eliminated initial manual CV review</li>
+<li>Reduced recruiter screening workload</li>
+<li>Generated consistent candidate evaluations</li>
+<li>Produced recruiter-ready candidate summaries</li>
+<li>Improved hiring process efficiency</li>
+<li>Created a scalable recruitment workflow</li>
+</ul>
+<h2 id="business-impact">Business Impact</h2>
+<p>The solution demonstrates how organizations can implement AI-assisted recruitment processes without investing in expensive ATS platforms.</p>
+<p>By combining workflow automation with large language models, the system reduces operational overhead while improving hiring efficiency and evaluation consistency.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<p>Effective AI systems are not defined by complex interfaces but by the value they create.</p>
+<p>By combining workflow automation, AI-powered analysis, and simple data collection mechanisms, organizations can automate high-volume operational processes quickly, cost-effectively, and at scale.</p> </div> </div> <!-- Sidebar --> <aside class="lg:sticky lg:top-28 flex flex-col gap-4"> <!-- Project Summary --> <div class="card p-5"> <p class="label-mono mb-4">Project Summary</p> <dl class="flex flex-col gap-4 text-sm"> <div> <dt class="text-xs font-mono text-ink-disabled mb-1">Role</dt> <dd class="text-ink-secondary">AI Automation &amp; Systems Engineer</dd> </div> <div> <dt class="text-xs font-mono text-ink-disabled mb-1">Timeline</dt> <dd class="text-ink-secondary">1 Week</dd> </div> <div> <dt class="text-xs font-mono text-ink-disabled mb-2">Technologies</dt> <dd class="flex flex-wrap gap-1.5"> <span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay border border-surface-border text-ink-muted"> n8n </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay border border-surface-border text-ink-muted"> OpenAI API </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay border border-surface-border text-ink-muted"> Tally Forms </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay border border-surface-border text-ink-muted"> Gmail </span><span class="font-mono text-2xs px-2 py-0.5 rounded bg-surface-overlay border border-surface-border text-ink-muted"> Supabase </span> </dd> </div> </dl> </div> <!-- Capabilities --> <div class="card p-5"> <p class="label-mono mb-4">Capabilities Demonstrated</p> <ul class="flex flex-col gap-2 text-sm text-ink-secondary"> <li>→ Workflow Automation</li> <li>→ AI Integration</li> <li>→ Backend Engineering</li> <li>→ Systems Design</li> <li>→ Operational Efficiency</li> </ul> </div> <!-- CTA --> <div class="card p-5"> <p class="label-mono mb-3">Need something similar?</p> <p class="text-sm text-ink-secondary leading-relaxed mb-4">
+I design intelligent workflows, automation systems, and AI-powered operational tools for growing teams.
+</p> <a href="/contact" class="inline-flex items-center gap-2 text-sm text-accent hover:text-accent/80 transition-colors">
+Start a conversation
+<svg width="12" height="12" viewBox="0 0 12 12" fill="none"> <path d="M2 6h8M6.5 3l3.5 3-3.5 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </div> <a href="/case-studies" class="flex items-center gap-2 text-sm text-ink-muted hover:text-ink-secondary transition-colors px-1"> <svg width="14" height="14" viewBox="0 0 12 12" fill="none"> <path d="M10 6H2M5.5 9L2 6l3.5-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg>
+All case studies
+</a> </aside> </div> </div> </section>  </main> <footer class="border-t border-surface-border mt-24"> <div class="container-main py-12"> <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-10"> <!-- Brand column --> <div class="sm:col-span-1"> <a href="/" class="inline-flex items-center gap-2 mb-3 group"> <svg width="18" height="18" viewBox="0 0 20 20" fill="none"> <rect x="1" y="1" width="18" height="18" rx="3" stroke="#06b6d4" stroke-width="1.5"></rect> <path d="M6 10 L10 6 L14 10 L10 14 Z" fill="#06b6d4" opacity="0.8"></path> <rect x="11" y="11" width="4" height="4" rx="1" fill="#06b6d4"></rect> </svg> <span class="font-display font-semibold text-sm text-ink-primary">
+quantumhub<span class="text-accent">.me</span> </span> </a> <p class="text-xs text-ink-muted leading-relaxed max-w-xs">
+Designing intelligent workflows, AI-powered operational systems, and scalable automation infrastructure.
+</p> </div> <!-- Nav links --> <div> <p class="label-mono mb-3">Pages</p> <ul class="flex flex-col gap-1.5"> <li> <a href="/projects" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Projects </a> </li><li> <a href="/case-studies" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Case Studies </a> </li><li> <a href="/about" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> About </a> </li><li> <a href="/contact" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors"> Contact </a> </li> </ul> </div> <!-- External links --> <div> <p class="label-mono mb-3">Connect</p> <ul class="flex flex-col gap-1.5"> <li> <a href="https://github.com/boluadurosakin" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-ink-secondary hover:text-ink-primary transition-colors"> GitHub <svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </li><li> <a href="https://x.com/0xQuantum_" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm text-ink-secondary hover:text-ink-primary transition-colors"> X <svg width="10" height="10" viewBox="0 0 12 12" fill="none" class="opacity-40"> <path d="M2.5 9.5L9.5 2.5M9.5 2.5H4.5M9.5 2.5V7.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"></path> </svg> </a> </li> </ul> </div> </div> <div class="pt-10 mt-10 text-center"> <p class="text-sm text-ink-secondary mb-4">
+Explore the architecture, workflows, and engineering decisions behind my flagship systems.
+</p> <a href="/case-studies" class="inline-flex items-center gap-2 px-4 py-2 rounded border border-surface-border hover:border-accent transition-colors">
+View Case Studies
+    →
+</a> </div> <!-- Bottom bar --> <div class="pt-6 border-t border-surface-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2"> <p class="font-mono text-2xs text-ink-disabled">
+© 2026 QuantumHub — AI Automation & Systems Engineer
+</p> <p class="font-mono text-2xs text-ink-disabled"> <span class="text-accent/60">→</span> open to collaborations
+</p> </div> </div> </footer> </body></html> <script>
+  const body = document.getElementById('case-study-body');
+  if (!body) throw new Error('No body');
+
+  const headings = body.querySelectorAll('h2, h3');
+
+  headings.forEach((heading, index) => {
+    const siblings = [];
+    let next = heading.nextElementSibling;
+    const level = parseInt(heading.tagName[1]);
+
+    while (next) {
+      const nextLevel = next.tagName.match(/^H([23])$/)
+        ? parseInt(next.tagName[1])
+        : null;
+      if (nextLevel !== null && nextLevel <= level) break;
+      siblings.push(next);
+      next = next.nextElementSibling;
+    }
+
+    if (siblings.length === 0) return;
+
+    // Only the first section starts open
+    const isFirst = index === 0;
+
+    const wrapper = document.createElement('div');
+    wrapper.style.overflow = 'hidden';
+    wrapper.style.transition = 'max-height 0.25s ease';
+    wrapper.style.maxHeight = isFirst ? '9999px' : '0px';
+
+    siblings[0].parentNode.insertBefore(wrapper, siblings[0]);
+    siblings.forEach((el) => wrapper.appendChild(el));
+
+    heading.style.cursor = 'pointer';
+    heading.style.userSelect = 'none';
+    heading.style.display = 'flex';
+    heading.style.alignItems = 'center';
+    heading.style.justifyContent = 'space-between';
+    heading.style.gap = '8px';
+
+    const chevron = document.createElement('span');
+    chevron.innerHTML = `<svg width="14" height="14" viewBox="0 0 12 12" fill="none" style="transition:transform 0.25s ease;flex-shrink:0"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    chevron.style.opacity = '0.4';
+    chevron.querySelector('svg').style.transform = isFirst ? 'rotate(0deg)' : 'rotate(-90deg)';
+    heading.appendChild(chevron);
+
+    let open = isFirst;
+
+    heading.addEventListener('click', () => {
+      open = !open;
+      wrapper.style.maxHeight = open ? '9999px' : '0px';
+      chevron.querySelector('svg').style.transform = open ? 'rotate(0deg)' : 'rotate(-90deg)';
+    });
+  });
+</script>
