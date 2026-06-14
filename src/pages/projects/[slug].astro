@@ -4,9 +4,8 @@ import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects', ({ data }) => !data.draft);
-
   return projects.map((project) => ({
-    params: { slug: project.slug },
+    params: { slug: project.id },
     props: { project },
   }));
 }
@@ -27,17 +26,11 @@ const {
   tags = [],
 } = project.data;
 
-// ensure date safety
 const projectDate = new Date(date);
 
-// related projects (FIXED: slug used correctly)
 const all = await getCollection('projects', ({ data }) => !data.draft);
-
 const related = all
-  .filter((p) =>
-    p.slug !== project.slug &&
-    p.data.category === category
-  )
+  .filter((p) => p.id !== project.id && p.data.category === category)
   .slice(0, 3);
 ---
 
@@ -59,35 +52,22 @@ const related = all
 
       <!-- MAIN -->
       <div>
-
-        <!-- Badges -->
         <div class="flex flex-wrap items-center gap-2 mb-5">
           <span class="badge-category">{category}</span>
-
           <span class:list={[`badge-${status}`]}>
             {status === 'production' && (
               <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse-slow"></span>
             )}
             {status}
           </span>
-
-          {featured && (
-            <span class="badge">
-              ★ featured
-            </span>
-          )}
+          {featured && <span class="badge">★ featured</span>}
         </div>
 
-        <!-- Title -->
         <h1 class="font-display font-bold text-3xl sm:text-4xl text-ink-primary mb-3">
           {title}
         </h1>
+        <p class="text-lg text-ink-secondary leading-relaxed mb-8">{description}</p>
 
-        <p class="text-lg text-ink-secondary leading-relaxed mb-8">
-          {description}
-        </p>
-
-        <!-- Content -->
         <div class="prose prose-invert max-w-none">
           <Content />
         </div>
@@ -96,30 +76,21 @@ const related = all
       <!-- SIDEBAR -->
       <aside class="lg:sticky lg:top-28 flex flex-col gap-4">
 
-        <!-- INFO CARD -->
         <div class="card p-5 flex flex-col gap-4">
           <p class="label-mono">Project info</p>
-
           <dl class="flex flex-col gap-3 text-sm">
-
             <div>
               <dt class="text-ink-disabled text-xs font-mono">Date</dt>
               <dd class="text-ink-secondary">
                 <time datetime={projectDate.toISOString()}>
-                  {projectDate.toLocaleDateString('en-GB', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric',
-                  })}
+                  {projectDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}
                 </time>
               </dd>
             </div>
-
             <div>
               <dt class="text-ink-disabled text-xs font-mono">Category</dt>
               <dd class="text-ink-secondary">{category}</dd>
             </div>
-
             <div>
               <dt class="text-ink-disabled text-xs font-mono">Stack</dt>
               <dd class="flex flex-wrap gap-1.5">
@@ -130,7 +101,6 @@ const related = all
                 ))}
               </dd>
             </div>
-
             {tags?.length > 0 && (
               <div>
                 <dt class="text-ink-disabled text-xs font-mono">Tags</dt>
@@ -146,63 +116,43 @@ const related = all
           </dl>
         </div>
 
-        <!-- LINKS -->
         {(github || demo) && (
           <div class="card p-5 flex flex-col gap-2">
-
             <p class="label-mono">Links</p>
-
             {github && (
-              <a href={github} target="_blank" class="text-sm text-ink-secondary hover:text-ink-primary">
+              <a href={github} target="_blank" rel="noopener noreferrer" class="text-sm text-ink-secondary hover:text-ink-primary transition-colors">
                 View source
               </a>
             )}
-
             {demo && (
-              <a href={demo} target="_blank" class="text-sm text-accent hover:text-accent/80">
+              <a href={demo} target="_blank" rel="noopener noreferrer" class="text-sm text-accent hover:text-accent/80 transition-colors">
                 Live demo
               </a>
             )}
-
           </div>
         )}
 
-        <a href="/projects" class="text-sm text-ink-muted hover:text-ink-secondary">
+        <a href="/projects" class="text-sm text-ink-muted hover:text-ink-secondary transition-colors">
           ← Back to projects
         </a>
 
       </aside>
     </div>
 
-    <!-- RELATED -->
     {related.length > 0 && (
       <div class="mt-16 pt-12 border-t border-surface-border">
-
-        <h2 class="font-display text-xl mb-6">
-          Related Projects
-        </h2>
-
+        <h2 class="font-display text-xl mb-6">Related Projects</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-
           {related.map((p) => (
-            <a href={`/projects/${p.slug}`} class="card p-4">
+            <a href={`/projects/${p.id}`} class="card p-4">
               <div class="flex justify-between mb-2">
                 <span class="badge-category">{p.data.category}</span>
-                <span class={`badge-${p.data.status}`}>
-                  {p.data.status}
-                </span>
+                <span class:list={[`badge-${p.data.status}`]}>{p.data.status}</span>
               </div>
-
-              <h3 class="font-semibold text-sm text-ink-primary">
-                {p.data.title}
-              </h3>
-
-              <p class="text-xs text-ink-muted line-clamp-2">
-                {p.data.description}
-              </p>
+              <h3 class="font-semibold text-sm text-ink-primary">{p.data.title}</h3>
+              <p class="text-xs text-ink-muted line-clamp-2">{p.data.description}</p>
             </a>
           ))}
-
         </div>
       </div>
     )}
