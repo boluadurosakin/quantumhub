@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+console.log(sorted.map(p => ({ id: p.id, slug: p.slug })));
 
 const allProjects = await getCollection('projects', ({ data }) => !data.draft);
 
