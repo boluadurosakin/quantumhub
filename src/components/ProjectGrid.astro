@@ -1,26 +1,15 @@
 ---
 import ProjectCard from './ProjectCard.astro';
+import type { CollectionEntry } from 'astro:content';
 
-interface Project {
-  slug:  string;
-  data: {
-    title:       string;
-    description: string;
-    stack:       string[];
-    status:      'production' | 'experimental' | 'archived';
-    category:    string;
-    featured?:   boolean;
-    github?:     string;
-    demo?:       string;
-  };
-}
+type Project = CollectionEntry<'projects'>;
 
 interface Props {
-  projects: Project[];
+  projects?: Project[];
   columns?: 2 | 3;
 }
 
-const { projects, columns = 3 } = Astro.props;
+const { projects = [], columns = 3 } = Astro.props;
 ---
 
 <div
