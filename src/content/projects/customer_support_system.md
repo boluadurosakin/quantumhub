@@ -2,7 +2,7 @@
 
 title: "MAYA AI SUPPORT ASSISTANT"
 description: "AI-powered customer support system that answers customer questions, retrieves knowledge from business documentation, and escalates unresolved issues to human teams."
-stack: ["n8n", "OpenAI API", "Supabase", "Chatwoot", "Vector Search"]
+stack: ["n8n", "OpenAI API", "Supabase", "PostgreSQL", "Vector Search"]
 status: "production"
 featured: true
 date: 2026-02-10
